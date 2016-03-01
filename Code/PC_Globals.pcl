@@ -19,6 +19,7 @@ int NUM_TEST_EXT = 4;
 
 #### Globals for Pavlovian Conditioning ####
 array <bool> IS_CSM[24];
+array <bool> IS_CSDA[NUM_EXTINCT];				## inter trial stimulus for extinction phase
 array <bool> IS_CSDC[NUM_GENERALISATION];
 array <bool> IS_CSM_TEST[NUM_TEST_EXT];
 
