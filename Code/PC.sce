@@ -312,7 +312,7 @@ trial {
 } CSDA_trial;
 
 trial {
-	trial_duration = 10000;
+	trial_duration = 8000;
 	trial_type = fixed;
 	picture CSDA_pic;
 } CSDA_bare_trial;
@@ -338,7 +338,7 @@ trial {
 } CSDB_trial;
 
 trial {
-	trial_duration = 10000;
+	trial_duration = 8000;
 	trial_type = fixed;
 	picture CSDB_pic;
 } CSDB_bare_trial;

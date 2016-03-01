@@ -62,7 +62,7 @@ build_stim_list(NUM_AQUI, IS_CSM);
 sort_stim_list(NUM_AQUI, Group_No, IS_CSM);
 ##  Build Extinction Inter Trial Stim List
 build_stim_list(NUM_EXTINCT,IS_CSDA);
-IS_CSDA.shuffle();
+sort_stim_list(NUM_EXTINCT, Group_No, IS_CSDA);
 
 # for testing purpose
 /*build_stim_list(NUM_AQUI, IS_POLY2);
@@ -261,7 +261,8 @@ build_stim_list(NUM_EXTINCT, IS_CSM);
 sort_stim_list(NUM_EXTINCT, Group_No, IS_CSM);
 CSm_trial.set_duration(10000/SPEED_UP);
 phase = 2;
-print_1d_bool_array(IS_CSM);
+term.print_line("CSDA:  ");
+print_1d_bool_array(IS_CSDA);
 ############## Extinction  Phase ##################
 if (!SKIP_EXTINCT) then
 	loop 
@@ -343,7 +344,19 @@ if (!SKIP_EXTINCT) then
 					response_button2 = last.button();
 				end;
 			end;
-		
+			
+		if (IS_CSDA[i])then		##  Inter trial stim
+			fixation_trial.set_duration(15000);
+			fixation_trial.present();
+			CSDA_bare_trial.present();
+			fixation_trial.present();
+		else
+			fixation_trial.set_duration(15000);
+			fixation_trial.present();
+			CSDB_bare_trial.present();
+			fixation_trial.present();
+		end;
+		fixation_trial.set_duration(5000);
 		#response_button2 = get_response();
 		term.print(response_button2);
 		
