@@ -30,7 +30,7 @@ int subid = int(logfile.subject());
 output_file out = new output_file;
 out.open(logfile.subject()+"_pc" + ".xls");
 out.print("student number: "+logfile.subject()+"\t"+"Age: "+string(Age)+"\t"+"Gender: "+string(Gender)+"\t"+"Group: "+string(Group_No)+"\n");	#print the trial index
-out.print("Phase\tTrial Number\tDog\tExpectancy\tEvaluation\n");	#print the trial index
+out.print("Phase\tTrial Number\tDog\tExpectancy\tEvaluation\tExtinction Dog\n");	#print the trial index
 
 #------------------------------------------------------------------------------
 # Setup output port
@@ -263,6 +263,7 @@ CSm_trial.set_duration(10000/SPEED_UP);
 phase = 2;
 term.print_line("CSDA:  ");
 print_1d_bool_array(IS_CSDA);
+int dog2 = 0;		#  Inter trial stim
 ############## Extinction  Phase ##################
 if (!SKIP_EXTINCT) then
 	loop 
@@ -349,25 +350,26 @@ if (!SKIP_EXTINCT) then
 			fixation_trial.set_duration(15000);
 			fixation_trial.present();
 			CSDA_bare_trial.present();
-			fixation_trial.present();
+			dog2 = 3;
 		else
 			fixation_trial.set_duration(15000);
 			fixation_trial.present();
 			CSDB_bare_trial.present();
-			fixation_trial.present();
+			dog2 = 4;
 		end;
-		fixation_trial.set_duration(5000);
+		
 		#response_button2 = get_response();
 		term.print(response_button2);
 		
 		#"Phase\tTrial Number\tDog\tExpectancy\tEvaluation\n"
-		save_trail_data(phase, i, dog, response_button1, response_button2, out);
+		save_extinction_trail_data(phase, i, dog, response_button1, response_button2, out, dog2);
 		term.print("\n");
 		i = i + 1;
 	end;	
 	break_trial.present();
 end;
 ############## Extinction  Phase ##################
+fixation_trial.set_duration(5000);
 phase = 3;
 ############## Reinstatement  Phase ###############
 #############  NOT USED IN GENERALISATION  ########

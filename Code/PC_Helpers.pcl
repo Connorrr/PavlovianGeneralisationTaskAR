@@ -220,6 +220,32 @@ begin
 	out.print(expect + "\t");
 	out.print(eval + "\n");
 end;
+
+sub
+save_extinction_trail_data(int phase, int trial_num, int dog, int expectancy, int evaluation, output_file out, int dog2)
+begin
+	#"Phase\tTrial Number\tShape\tExpectancy\tEvaluation\n"
+	string expect = "";
+	string eval = "";
+	expectancy=expectancy-10;
+	evaluation=evaluation-10;
+	if (expectancy < -5 || expectancy > 5)then
+		expect = "n/a";
+	else
+		expect = string(expectancy);
+	end;
+	if (evaluation < -5 || evaluation > 5)then
+		eval = "n/a";
+	else
+		eval = string(evaluation);
+	end;
+	out.print(string(phase) + "\t");
+	out.print(string(trial_num) + "\t");
+	out.print(string(dog) + "\t");
+	out.print(expect + "\t");
+	out.print(eval + "\t");
+	out.print(string(dog2) + "\n");
+end;
 #
 sub int num_str_2_int(string str_num)
 begin
