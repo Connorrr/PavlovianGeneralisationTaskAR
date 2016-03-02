@@ -62,7 +62,7 @@ build_stim_list(NUM_AQUI, IS_CSM);
 sort_stim_list(NUM_AQUI, Group_No, IS_CSM);
 ##  Build Extinction Inter Trial Stim List
 build_stim_list(NUM_EXTINCT,IS_CSDA);
-sort_stim_list(NUM_EXTINCT, Group_No, IS_CSDA);
+sort_stim_list(NUM_EXTINCT, random(1,2), IS_CSDA);
 
 # for testing purpose
 /*build_stim_list(NUM_AQUI, IS_POLY2);
