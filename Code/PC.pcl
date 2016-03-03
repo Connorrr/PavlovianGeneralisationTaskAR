@@ -29,8 +29,8 @@ int subid = int(logfile.subject());
 
 output_file out = new output_file;
 out.open(logfile.subject()+"_pc" + ".xls");
-out.print("student number: "+logfile.subject()+"\t"+"Age: "+string(Age)+"\t"+"Gender: "+string(Gender)+"\t"+"Group: "+string(Group_No)+"\n");	#print the trial index
-out.print("Phase\tTrial Number\tDog\tExpectancy\tEvaluation\tExtinction Dog\n");	#print the trial index
+out.print("student number: "+logfile.subject()+"\t"+"Age: "+string(Age)+"\t"+"Gender: "+string(Gender)+"\t"+"Group: "+string(Group_No)+"Stim Group: \t"+string(Stim_Group)+"\n");	#print the trial index
+out.print("Phase\tTrial Number\tDog\tExpectancy\tEvaluation\tExtinction Dog\tTrial Type\n");	#print the trial index
 
 #------------------------------------------------------------------------------
 # Setup output port
@@ -145,6 +145,7 @@ end;
 print_1d_bool_array(IS_CSM);
 
 phase = 1;
+string trial_type = "";
 
 ############## Aquisition Phase ##################
 if (!SKIP_AQUI) then
@@ -180,6 +181,10 @@ if (!SKIP_AQUI) then
 					response_button1 = last.button();
 				end;
 				dog = 1;
+				if (Stim_Group != 1) then
+					dog = 2;
+				end;
+				trial_type = "CS-";
 			else
 				
 				CSm_trial.set_duration(8000);
@@ -202,6 +207,10 @@ if (!SKIP_AQUI) then
 				#response_button1 = get_response();
 				CSm_trial2.present();
 				dog = 2;
+				if (Stim_Group != 1) then
+					dog = 1;
+				end;
+				trial_type = "CS+";
 				
 			end;
 			#if (response_button1 == 0)then
@@ -249,7 +258,7 @@ if (!SKIP_AQUI) then
 		term.print(response_button2);
 		
 		#"Phase\tTrial Number\tDog\tExpectancy\tEvaluation\n"
-		save_trail_data(phase, i, dog, response_button1, response_button2, out);
+		save_trail_data(phase, i, dog, response_button1, response_button2, out, trial_type);
 		term.print("\n");
 		i = i + 1;
 	end;
@@ -293,6 +302,10 @@ if (!SKIP_EXTINCT) then
 					response_button1 = last.button();
 				end;
 				dog = 1;
+				if (Stim_Group != 1) then
+					dog = 2;
+				end;
+				trial_type = "CS-";
 			else
 				CSm_trial.set_duration(8000);
 				CSm_trial.present();
@@ -309,6 +322,10 @@ if (!SKIP_EXTINCT) then
 					response_button1 = last.button();
 				end;
 				dog = 2;
+				if (Stim_Group != 1) then
+					dog = 1;
+				end;
+				trial_type = "CS+";
 			end;
 			blank_trial.present();
 			rndval = random(5000, 15000)/SPEED_UP;
@@ -362,7 +379,7 @@ if (!SKIP_EXTINCT) then
 		term.print(response_button2);
 		
 		#"Phase\tTrial Number\tDog\tExpectancy\tEvaluation\n"
-		save_extinction_trail_data(phase, i, dog, response_button1, response_button2, out, dog2);
+		save_extinction_trail_data(phase, i, dog, response_button1, response_button2, out, dog2, trial_type);
 		term.print("\n");
 		i = i + 1;
 	end;	
@@ -425,6 +442,7 @@ if (!SKIP_GEN)then
 					response_button1 = last.button();
 				end;
 				dog = 5;
+				trial_type = "CSDC";
 			else
 				CSDD_trial.set_duration(10000);
 				CSDD_trial.present();
@@ -441,6 +459,7 @@ if (!SKIP_GEN)then
 					response_button1 = last.button();
 				end;
 				dog = 6;
+				trial_type = "CSDD";
 			end;
 			blank_trial.present();
 			rndval = random(5000, 15000)/SPEED_UP;
@@ -479,7 +498,7 @@ if (!SKIP_GEN)then
 		term.print(response_button2);
 		
 		#"Phase\tTrial Number\tDog\tExpectancy\tEvaluation\n"
-		save_trail_data(phase, i, dog, response_button1, response_button2, out);
+		save_trail_data(phase, i, dog, response_button1, response_button2, out, trial_type);
 		term.print("\n");
 		i = i + 1;
 	end;	
@@ -519,6 +538,10 @@ begin
 				response_button1 = last.button();
 			end;
 			dog = 1;
+			if (Stim_Group != 1) then
+					dog = 2;
+				end;
+				trial_type = "CS-";
 		else
 			CSm_trial.set_duration(8000);
 			CSm_trial.present();
@@ -535,6 +558,10 @@ begin
 				response_button1 = last.button();
 			end;
 			dog = 2;
+			if (Stim_Group != 1) then
+				dog = 1;
+			end;
+			trial_type = "CS+";
 		end;
 		blank_trial.present();
 		rndval = random(5000, 15000)/SPEED_UP;
@@ -573,7 +600,7 @@ begin
 	term.print(response_button2);
 	
 	#"Phase\tTrial Number\tDog\tExpectancy\tEvaluation\n"
-	save_trail_data(phase, i, dog, response_button1, response_button2, out);
+	save_trail_data(phase, i, dog, response_button1, response_button2, out, trial_type);
 	term.print("\n");
 	i = i + 1;
 end;	
