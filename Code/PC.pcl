@@ -29,7 +29,7 @@ int subid = int(logfile.subject());
 
 output_file out = new output_file;
 out.open(logfile.subject()+"_pc" + ".xls");
-out.print("student number: "+logfile.subject()+"\t"+"Age: "+string(Age)+"\t"+"Gender: "+string(Gender)+"\t"+"Group: "+string(Group_No)+"Stim Group: \t"+string(Stim_Group)+"\n");	#print the trial index
+out.print("student number: "+logfile.subject()+"\t"+"Age: "+string(Age)+"\t"+"Gender: "+string(Gender)+"\t"+"Group: "+string(Group_No)+"\tStim Group: "+string(Stim_Group)+"\n");	#print the trial index
 out.print("Phase\tTrial Number\tDog\tExpectancy\tEvaluation\tExtinction Dog\tTrial Type\n");	#print the trial index
 
 #------------------------------------------------------------------------------
