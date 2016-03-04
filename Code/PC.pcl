@@ -164,7 +164,8 @@ if (!SKIP_AQUI) then
 		
 			if (IS_CSM[i] == false) then
 				#
-				CSp_trial.set_duration(10000);
+				CSp_trial.set_duration(8000);
+				oport.send_code( 2 );
 				CSp_trial.present();
 				if (bool( response_manager.response_count() )) then
 				#if (bool( stimulus_manager.stimulus_count() )) then
@@ -180,6 +181,7 @@ if (!SKIP_AQUI) then
 					CSp_rate_pic.insert_part(3, expect_bmp, 0, -425);
 					response_button1 = last.button();
 				end;
+				oport.send_code( 2 );
 				dog = 1;
 				if (Stim_Group != 1) then
 					dog = 2;
@@ -187,15 +189,16 @@ if (!SKIP_AQUI) then
 				trial_type = "CS-";
 			else
 				
-				CSm_trial.set_duration(8000);
+				CSm_trial.set_duration(6000);
+				oport.send_code( 1 );
 				CSm_trial.present();
 				if (bool( response_manager.response_count() )) then
 				#if (bool( stimulus_manager.stimulus_count() )) then
 					stimulus_data last = stimulus_manager.last_stimulus_data();
 					CSm_rate_pic.remove_part(3);
 					CSm_rate_pic.remove_part(2);
-					if (8000-last.reaction_time()>50) then
-						CSm_bare_trial.set_duration(8000-last.reaction_time());
+					if (6000-last.reaction_time()>50) then
+						CSm_bare_trial.set_duration(6000-last.reaction_time());
 						CSm_bare_trial.present();
 					end;
 					term.print_line("event2");
@@ -205,7 +208,9 @@ if (!SKIP_AQUI) then
 				end;
 				
 				#response_button1 = get_response();
+				oport.send_code( 64 );
 				CSm_trial2.present();
+				oport.send_code( 1 );
 				dog = 2;
 				if (Stim_Group != 1) then
 					dog = 1;
@@ -287,20 +292,22 @@ if (!SKIP_EXTINCT) then
 		end;
 		
 			if (IS_CSM[i] == false) then 
-				CSp_trial.set_duration(10000);
+				CSp_trial.set_duration(8000);
+				oport.send_code( 2 );
 				CSp_trial.present();
 				if (bool( response_manager.response_count() )) then
 				#if (bool( stimulus_manager.stimulus_count() )) then
 					stimulus_data last = stimulus_manager.last_stimulus_data();
 					CSp_rate_pic.remove_part(2);
-					if (10000-last.reaction_time()>50) then
-						CSp_bare_trial.set_duration(10000-last.reaction_time());
+					if (8000-last.reaction_time()>50) then
+						CSp_bare_trial.set_duration(8000-last.reaction_time());
 						CSp_bare_trial.present();
 					end;
 					term.print_line("event1");
 					CSp_rate_pic.insert_part(2, rate_now_text,0, 425);
 					response_button1 = last.button();
 				end;
+				oport.send_code( 2 );
 				dog = 1;
 				if (Stim_Group != 1) then
 					dog = 2;
@@ -308,6 +315,7 @@ if (!SKIP_EXTINCT) then
 				trial_type = "CS-";
 			else
 				CSm_trial.set_duration(8000);
+				oport.send_code( 1 );
 				CSm_trial.present();
 				if (bool( response_manager.response_count() )) then
 				#if (bool( stimulus_manager.stimulus_count() )) then
@@ -321,6 +329,7 @@ if (!SKIP_EXTINCT) then
 					CSm_rate_pic.insert_part(2, rate_now_text,0, 425);
 					response_button1 = last.button();
 				end;
+				oport.send_code( 1 );
 				dog = 2;
 				if (Stim_Group != 1) then
 					dog = 1;
@@ -366,12 +375,16 @@ if (!SKIP_EXTINCT) then
 		if (IS_CSDA[i])then		##  Inter trial stim
 			fixation_trial.set_duration(15000);
 			fixation_trial.present();
+			oport.send_code( 4 );
 			CSDA_bare_trial.present();
+			oport.send_code( 4 );
 			dog2 = 3;
 		else
 			fixation_trial.set_duration(15000);
 			fixation_trial.present();
+			oport.send_code( 8 );
 			CSDB_bare_trial.present();
+			oport.send_code( 8 );
 			dog2 = 4;
 		end;
 		
@@ -427,37 +440,41 @@ if (!SKIP_GEN)then
 		end;
 		
 			if (IS_CSDC[i] == false) then 
-				CSDC_trial.set_duration(10000);
+				CSDC_trial.set_duration(8000);
+				oport.send_code( 16 );
 				CSDC_trial.present();
 				if (bool( response_manager.response_count() )) then
 				#if (bool( stimulus_manager.stimulus_count() )) then
 					stimulus_data last = stimulus_manager.last_stimulus_data();
 					CSDC_rate_pic.remove_part(2);
-					if (10000-last.reaction_time()>50) then
-						CSDC_bare_trial.set_duration(10000-last.reaction_time());
+					if (8000-last.reaction_time()>50) then
+						CSDC_bare_trial.set_duration(8000-last.reaction_time());
 						CSDC_bare_trial.present();
 					end;
 					term.print_line("CSDCEvent");
 					CSDC_rate_pic.insert_part(2, rate_now_text,0, 370);
 					response_button1 = last.button();
 				end;
+				oport.send_code( 16 );
 				dog = 5;
 				trial_type = "CSDC";
 			else
-				CSDD_trial.set_duration(10000);
+				CSDD_trial.set_duration(8000);
+				oport.send_code( 32 );
 				CSDD_trial.present();
 				if (bool( response_manager.response_count() )) then
 				#if (bool( stimulus_manager.stimulus_count() )) then
 					stimulus_data last = stimulus_manager.last_stimulus_data();
 					CSDD_rate_pic.remove_part(2);
-					if (10000-last.reaction_time()>50) then
-						CSDD_bare_trial.set_duration(10000-last.reaction_time());
+					if (8000-last.reaction_time()>50) then
+						CSDD_bare_trial.set_duration(8000-last.reaction_time());
 						CSDD_bare_trial.present();
 					end;
 					term.print_line("CSDDEvent");
 					CSDD_rate_pic.insert_part(2, rate_now_text,0, 370);
 					response_button1 = last.button();
 				end;
+				oport.send_code( 32 );
 				dog = 6;
 				trial_type = "CSDD";
 			end;
@@ -523,20 +540,22 @@ begin
 	end;
 	
 		if (IS_CSM_TEST[i] == false) then 
-			CSp_trial.set_duration(10000);
+			CSp_trial.set_duration(8000);
+			oport.send_code( 2 );
 			CSp_trial.present();
 			if (bool( response_manager.response_count() )) then
 			#if (bool( stimulus_manager.stimulus_count() )) then
 				stimulus_data last = stimulus_manager.last_stimulus_data();
 				CSp_rate_pic.remove_part(2);
-				if (10000-last.reaction_time()>50) then
-					CSp_bare_trial.set_duration(10000-last.reaction_time());
+				if (8000-last.reaction_time()>50) then
+					CSp_bare_trial.set_duration(8000-last.reaction_time());
 					CSp_bare_trial.present();
 				end;
 				term.print_line("event1");
 				CSp_rate_pic.insert_part(2, rate_now_text,0, 370);
 				response_button1 = last.button();
 			end;
+			oport.send_code( 2 );
 			dog = 1;
 			if (Stim_Group != 1) then
 					dog = 2;
@@ -544,12 +563,13 @@ begin
 				trial_type = "CS-";
 		else
 			CSm_trial.set_duration(8000);
+			oport.send_code( 1 );
 			CSm_trial.present();
 			if (bool( response_manager.response_count() )) then
 			#if (bool( stimulus_manager.stimulus_count() )) then
 				stimulus_data last = stimulus_manager.last_stimulus_data();
 				CSm_rate_pic.remove_part(2);
-				if (80000-last.reaction_time()>50) then
+				if (8000-last.reaction_time()>50) then
 					CSm_bare_trial.set_duration(8000-last.reaction_time());
 					CSm_bare_trial.present();
 				end;
@@ -557,6 +577,7 @@ begin
 				CSm_rate_pic.insert_part(2, rate_now_text,0, 425);
 				response_button1 = last.button();
 			end;
+			oport.send_code( 1 );
 			dog = 2;
 			if (Stim_Group != 1) then
 				dog = 1;
