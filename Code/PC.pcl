@@ -185,7 +185,7 @@ if (!SKIP_AQUI) then
 				trial_type = "CS-";
 			else
 				
-				CSm_trial.set_duration(6000);
+				CSm_trial.set_duration(8000);
 				oport.send_code( 1 );
 				CSm_trial.present();
 				if (bool( response_manager.response_count() )) then
