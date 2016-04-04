@@ -45,7 +45,7 @@ oport.send_code( 255 );
 fixation_trial.set_duration(5000/SPEED_UP);
 CSp_trial.set_duration(10000/SPEED_UP);
 CSm_trial.set_duration(8000/SPEED_UP);
-CSm_trial2.set_duration(2000/SPEED_UP);
+CSm_trial2.set_duration(3000/SPEED_UP);
 blank_trial.set_duration(5000/SPEED_UP);
 CSm_rating_trial.set_duration(5000/SPEED_UP);
 CSp_rating_trial.set_duration(5000/SPEED_UP);

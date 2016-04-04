@@ -2,7 +2,7 @@
 #Description:	Contains the subroutines used in the experiment
 #Programmer:	Connor Reid (Psy Technician)
 #Created@:		08/08/2013
-#LastMod@:		29/02/2013
+#LastMod@:		04/04/2016
 #ModifiedBy:	John Zhong
 #Copyright@: 	School Of Psychology, Griffith University
 #-------------------------------------------------------------------
