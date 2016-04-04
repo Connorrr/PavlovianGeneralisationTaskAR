@@ -193,8 +193,8 @@ if (!SKIP_AQUI) then
 					stimulus_data last = stimulus_manager.last_stimulus_data();
 					CSm_rate_pic.remove_part(3);
 					CSm_rate_pic.remove_part(2);
-					if (6000-last.reaction_time()>50) then
-						CSm_bare_trial.set_duration(6000-last.reaction_time());
+					if (8000-last.reaction_time()>50) then
+						CSm_bare_trial.set_duration(8000-last.reaction_time());
 						CSm_bare_trial.present();
 					end;
 					term.print_line("event2");
