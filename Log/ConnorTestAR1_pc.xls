@@ -1,0 +1,58 @@
+student number: ConnorTestAR1	Age: 18	Gender: 1	Group: 1	Stim Group: 1
+Phase	Trial Number	Dog	Expectancy	Evaluation	Extinction Dog	Trial Type
+1	1	1	n/a	n/a		CS-
+1	2	2	n/a	n/a		CS+
+1	3	2	n/a	n/a		CS+
+1	4	1	n/a	n/a		CS-
+1	5	1	n/a	n/a		CS-
+1	6	2	n/a	n/a		CS+
+1	7	2	n/a	n/a		CS+
+1	8	1	n/a	n/a		CS-
+1	9	1	n/a	n/a		CS-
+1	10	2	n/a	n/a		CS+
+1	11	2	n/a	n/a		CS+
+1	12	1	n/a	n/a		CS-
+1	13	2	n/a	n/a		CS+
+1	14	2	n/a	n/a		CS+
+1	15	1	n/a	n/a		CS-
+1	16	1	n/a	n/a		CS-
+1	17	2	n/a	n/a		CS+
+1	18	2	n/a	n/a		CS+
+1	19	1	n/a	n/a		CS-
+1	20	1	n/a	n/a		CS-
+1	21	2	n/a	n/a		CS+
+1	22	2	n/a	n/a		CS+
+1	23	1	n/a	n/a		CS-
+1	24	1	n/a	n/a		CS-
+2	1	1	n/a	n/a	3	CS-
+2	2	2	n/a	n/a	4	CS+
+2	3	1	n/a	n/a	3	CS-
+2	4	2	n/a	n/a	4	CS+
+2	5	1	n/a	n/a	3	CS-
+2	6	2	n/a	n/a	4	CS+
+2	7	2	n/a	n/a	4	CS+
+2	8	1	n/a	n/a	3	CS-
+2	9	2	n/a	n/a	4	CS+
+2	10	2	n/a	n/a	3	CS+
+2	11	1	n/a	n/a	3	CS-
+2	12	2	n/a	n/a	4	CS+
+2	13	1	n/a	n/a	3	CS-
+2	14	2	n/a	n/a	4	CS+
+2	15	1	n/a	n/a	3	CS-
+2	16	2	n/a	n/a	4	CS+
+2	17	1	n/a	n/a	3	CS-
+2	18	2	n/a	n/a	4	CS+
+2	19	1	n/a	n/a	3	CS-
+2	20	2	n/a	n/a	4	CS+
+2	21	1	n/a	n/a	3	CS-
+2	22	1	n/a	n/a	4	CS-
+2	23	2	n/a	n/a	4	CS+
+2	24	1	n/a	n/a	3	CS-
+3	1	5	n/a	n/a		CSDC
+3	2	5	n/a	n/a		CSDC
+3	3	6	n/a	n/a		CSDD
+3	4	6	n/a	n/a		CSDD
+4	1	1	n/a	n/a		CS-
+4	2	1	n/a	n/a		CS-
+4	3	2	n/a	n/a		CS+
+4	4	2	n/a	n/a		CS+

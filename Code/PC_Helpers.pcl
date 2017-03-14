@@ -22,8 +22,33 @@ end;
 sub print_1d_bool_array(array <bool, 1>& arr) begin		##Used to terminal print 1d bool arrays
 	term.print_line("1D Array: ");
 	loop int j = 1 until j > arr.count() begin
-		term.print(string(arr[j]) + ", ");
+		term.print(string(j) + ":  " + string(arr[j]) + "\n");
 		j = j + 1;
+	end;
+end;
+
+sub print_1d_int_array(array <int, 1>& arr) begin		##Used to terminal print 1d bool arrays
+	term.print_line("1D Array: ");
+	loop int j = 1 until j > arr.count() begin
+		term.print(string(j) + ":  " + string(arr[j]) + "\n");
+		j = j + 1;
+	end;
+end;
+
+sub check_bool_array(array <bool, 1>& arr) begin
+	int csm_count = 0;
+	int csp_count = 0;
+	loop int j = 1 until j > arr.count() begin
+		if (arr[j]) then
+			csm_count = csm_count + 1;
+		else
+			csp_count = csp_count + 1;
+		end;
+		j = j + 1;
+	end;
+	term.print_line("csm:  " + string(csm_count) + ",  csp_count:  " + string(csp_count));
+	if (csm_count != 12 && csp_count != 12) then
+		term.print_line("There was a problem with miss matched trials:  ");
 	end;
 end;
 
@@ -85,58 +110,57 @@ sub
 begin
 		array<int>list_1[0];
 		array<int>list_2[0];
-		bool temp = false;
-		#is_sorted = true;
 		# get the random size of the pattern for the 
 		int val = random(size/4,size/2-2);
-		#term.print_line(val);
+		term.print_line(val);
 		int m = (size/2-1)-val;
-		#term.print_line(m);
+		term.print_line(m);
 		int n = 2*val-(size/2-1);
-		#term.print_line(n);
+		term.print_line(n);
 		
-			list_1.add(1);									# Changed from list_1.add(2);	
-			loop int i = 1 until i > m-1 begin		# Changed from i > m
-				list_1.add(2);
-				i=i+1;
-			end;
-			loop int i = 1 until i > n+1 begin		# Changed from i > n
-				list_1.add(1);
-				i=i+1;
-			end;
-			list_1.shuffle(2, list_1.count());
-			int num = random(val, val+1);
-			#term.print_line(num);
-			m = size/2-num;
-			#term.print_line(m);
-			n = 2*num-size/2;
-			#term.print_line(n);
-			loop int i = 1 until i > m begin
-				list_2.add(2);
-				i=i+1;
-			end;
-			loop int i = 1 until i > n begin
-				list_2.add(1);
-				i=i+1;
-			end;
-			list_2.shuffle();
-			/*term.print("1: (");
-			loop int i = 1 until i > list_1.count() begin
-				term.print(string(list_1[i]) + " ");
-				i = i + 1;
-			end;
-			term.print(")\n2: (");
-			loop int i = 1 until i > list_2.count() begin
-				term.print(string(list_2[i]) + " ");
-				i = i + 1;
-			end;
-			term.print(")\n");*/
-		#end;
+		# Important:  m * 2 + n = 11 should always be correct here
+		
+		list_1.add(1);								# Changed from list_1.add(2);	So the first 2 trials are different
+		loop int i = 1 until i > m begin		# Changed from i > m
+			list_1.add(2);
+			i=i+1;
+		end;
+		loop int i = 1 until i > n begin		# Changed from i > n
+			list_1.add(1);
+			i=i+1;
+		end;
+		
+		term.print_line("List 1 before shuffle after element 2:  ");
+		print_1d_int_array(list_1);
+		
+		list_1.shuffle(2, list_1.count());
+		int num = random(val, val+1);
+		term.print_line(num);
+		m = size/2-num;
+		term.print_line(m);
+		n = 2*num-size/2;
+		term.print_line(n);
+		
+		# Important:  m * 2 + n = 12 should always be correct here
+		
+		loop int i = 1 until i > m begin
+			list_2.add(2);
+			i=i+1;
+		end;
+		loop int i = 1 until i > n begin
+			list_2.add(1);
+			i=i+1;
+		end;
+		
+		term.print_line("List 2 before shuffle:  ");
+		print_1d_int_array(list_2);
+		
+		list_2.shuffle();
 		int k=1;
 		#term.print_line(list.count());
 		loop int j = 1 until j > list_1.count() begin
 			loop int i = 1 until i > list_1[j] begin
-				if (group_number == 1)then# poly first
+				if (group_number == 1)then	# csp first
 					trial_list[k]=false;
 				else
 					trial_list[k]=true;
@@ -146,7 +170,7 @@ begin
 			end;
 			if j <= list_2.count() then
 				loop int i = 1 until i > list_2[j] begin
-					if (group_number == 1)then# poly first
+					if (group_number == 1)then	# csp first
 						trial_list[k]=true;
 					else
 						trial_list[k]=false;
@@ -158,6 +182,10 @@ begin
 			end;
 			j=j+1;
 		end;
+		
+		term.print_line("Trials");
+		print_1d_bool_array(trial_list);
+		#term.print_line(trial_list.count())
 		
 end;
 

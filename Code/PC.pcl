@@ -58,6 +58,65 @@ array <bool> IS_POLY3[24];
 array <bool> IS_POLY4[24];
 array <bool> IS_POLY5[24];
 
+term.print_line("Aqui Test");
+loop
+	int i = 1
+until 
+	i > 4
+begin
+	term.print_line(i);
+	build_stim_list(NUM_AQUI, IS_CSM);
+	sort_stim_list(NUM_AQUI, Group_No, IS_CSM);
+	check_bool_array(IS_CSM);
+	i = i + 1
+end;
+
+term.print_line("Ext Test");
+loop
+	int i = 1
+until 
+	i > 4
+begin
+	term.print_line(i);
+	build_stim_list(NUM_EXTINCT, IS_CSM);
+	sort_stim_list(NUM_EXTINCT, Group_No, IS_CSM);
+	check_bool_array(IS_CSM);
+	i = i + 1
+end;
+
+term.print_line("Gen Test");
+loop
+	int i = 1
+until 
+	i > 4
+begin
+	term.print_line(i);
+	build_stim_list(NUM_GENERALISATION, IS_CSDC);
+	sort_stim_list(NUM_GENERALISATION, Group_No, IS_CSDC);
+	check_bool_array(IS_CSDC);
+	i = i + 1
+end;
+
+term.print_line("Ext Test");
+loop
+	int i = 1
+until 
+	i > 4
+begin
+	term.print_line(i);
+	build_stim_list(NUM_TEST_EXT, IS_CSM_TEST);
+	sort_stim_list(NUM_TEST_EXT, Group_No, IS_CSM_TEST);
+	check_bool_array(IS_CSM_TEST);
+	i = i + 1
+end;
+
+build_stim_list(NUM_AQUI, IS_CSM);
+#print_1d_bool_array(IS_CSM);
+sort_stim_list(NUM_AQUI, Group_No, IS_CSM);
+##  Build Extinction Inter Trial Stim List
+build_stim_list(NUM_EXTINCT,IS_CSDA);
+sort_stim_list(NUM_EXTINCT, Group_No, IS_CSDA);
+
 build_stim_list(NUM_AQUI, IS_CSM);
 sort_stim_list(NUM_AQUI, Group_No, IS_CSM);
 ##  Build Extinction Inter Trial Stim List
